@@ -1,0 +1,31 @@
+"""
+'id','int(11) unsigned','NO','PRI',NULL,'auto_increment'
+'status_id','int(11) unsigned','NO','MUL',NULL,''
+'user_id','int(11) unsigned','NO','MUL',NULL,''
+'scooter_id','varchar(20)','NO','MUL',NULL,''
+'billing_info_id','int(11) unsigned','NO','',NULL,''
+'voucher_id','int(11) unsigned','YES','',NULL,''
+'reservation_id','int(11) unsigned','YES','MUL',NULL,''
+'start_time','datetime','YES','MUL',NULL,''
+'end_time','datetime','YES','MUL',NULL,''
+'price','decimal(10,2)','YES','',NULL,''
+'description','varchar(255)','YES','',NULL,''
+"""
+
+type Ordering {
+    id: Int
+    status_id: Int
+    user_id: Int
+    scooter_id: String
+    billing_info_id: Int
+    voucher_id: Int
+    reservation_id: Int
+    start_time: String
+    end_time: String
+    price: Float
+    description: String
+}
+
+type Query {
+    ordering(userId:Int!, count:Int, startDt:String): [ Ordering ]
+}

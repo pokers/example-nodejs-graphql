@@ -1,0 +1,42 @@
+"""
+'id','int(11) unsigned','NO','PRI',NULL,'auto_increment'
+'cognito_username','varchar(255)','NO','MUL',NULL,''
+'username','varchar(100)','NO','UNI',NULL,''
+'password','varchar(255)','YES','',NULL,''
+'name','varchar(30)','YES','',NULL,''
+'market','varchar(10)','YES','',NULL,''
+'email','varchar(100)','YES','',NULL,''
+'birthday','date','YES','',NULL,''
+'gender','enum(\'F\',\'M\')','YES','',NULL,''
+'phone_number','varchar(50)','NO','MUL',NULL,''
+'used_count','int(11)','YES','',NULL,''
+'status_id','int(11) unsigned','NO','MUL',NULL,''
+'ordering_id','int(11) unsigned','YES','MUL',NULL,''
+'description','varchar(255)','YES','',NULL,''
+"""
+type User {
+    id: Int!
+    cognito_username: String!
+    username: String
+    password: String
+    name: String
+    market: String
+    email: String
+    birthday: String
+    gender: String
+    phone_number: String!
+    used_count: Int
+    status_id: Int
+    ordering_id: Int
+    description: String
+    ordering: [Ordering]
+}
+
+type Query {
+    users(count:Int, offset: Int): [ User ]
+    user(userId:Int!, count: Int, startDt: String): User
+}
+
+type Mutation {
+    addUser(cognito_username: String): Boolean
+}
